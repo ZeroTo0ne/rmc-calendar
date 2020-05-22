@@ -1,0 +1,50 @@
+.@{prefixClass} .confirm-panel {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  background: #fff;
+  border-top: @border-color-base @border-width-sm solid;
+
+  .info {
+    font-size: @font-size-caption-sm;
+
+    p {
+      margin: 0;
+    }
+
+    p + p {
+      margin-top: @h-spacing-md;
+    }
+
+    .grey {
+      color: @color-text-placeholder;
+    }
+  }
+
+  .button {
+    text-align: center;
+    width: 80 * @hd;
+    height: 30 * @hd;
+    line-height: 30 * @hd;
+    margin: 0 0 0 auto;
+    padding: @h-spacing-md 0;
+    font-size: @button-font-size;
+  }
+
+  .button + .button {
+    border-left: @border-color-base @border-width-sm solid;
+  }
+
+  .button-disable {
+    color: @color-text-disabled;
+  }
+
+  .confirm {
+    color: @brand-primary;
+  }
+
+  .button-full {
+    width: 100%;
+    text-align: center;
+  }
+}

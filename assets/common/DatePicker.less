@@ -1,0 +1,31 @@
+.@{prefixClass} .date-picker {
+  display: flex;
+  flex-direction: column;
+  background: #eee;
+  padding-bottom: env(safe-area-inset-bottom);
+  flex: 1;
+  min-height: 0;
+
+  .wrapper {
+    height: auto;
+    position: relative;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .months {
+    background: #fff;
+  }
+
+  .load-tip {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    left: 0;
+    right: 0;
+    padding: 10 * @hd 0;
+    top: -40 * @hd;
+    color: #bbb;
+  }
+}

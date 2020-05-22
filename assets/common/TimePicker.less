@@ -1,0 +1,42 @@
+.@{prefixClass} .time-picker {  
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: @modal-zindex;
+  background: #fff;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 44 * @hd;
+    font-size: @font-size-caption;
+    border-top: @border-width-sm @border-color-base solid;
+    border-bottom: @border-width-sm @border-color-base solid;
+
+    .title {
+      flex: 1;
+      width: auto;
+      color: @color-text-base;
+      text-align: left;
+      margin-left: 10 * @hd;
+    }
+
+    .time-show {
+      flex: 1;
+      text-align: right;
+      font-size: 20 * @hd;
+      margin-right: 10 * @hd;
+    }
+  }
+
+  .fm-picker-col-indicator {
+    background: @fill-grey;
+    z-index: 0;
+  }
+
+}

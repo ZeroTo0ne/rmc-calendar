@@ -1,0 +1,63 @@
+.@{prefixClass} {
+  .mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: @modal-zindex;
+    background: rgba(0, 0, 0, .5);
+  }
+
+  .content, .picker {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    left: 0;
+    z-index: @modal-zindex;
+    background: #fff;
+  }
+
+  .content {
+    height: 70%;
+    top: 30%;
+  }
+
+  .picker {
+    height: auto;
+    bottom: 0;
+  }
+
+  .header {
+    margin: 8 * @hd;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+
+    .come-today {
+      width: 30 * @hd;
+    }
+
+    .title {
+      text-align: center;
+      flex: 1;
+      font-size: @font-size-caption;
+      color: #068EEF;
+    }
+
+    .right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30 * @hd;
+      height: 24 * @hd;
+      color: #068EEF;
+      font-size: 14 * @hd;
+    }
+  }
+
+  .timePicker {
+    border-top: 1PX #ccc solid;
+  }
+}
