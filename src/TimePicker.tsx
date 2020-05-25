@@ -44,30 +44,6 @@ export default class TimePicker extends React.PureComponent<PropsType, {}> {
     onCancel && onCancel()
   }
 
-  getMinTime(date?: Date) {
-    const minDate = this.props.minDate as Date
-    if (!date ||
-      date.getFullYear() < minDate.getFullYear() ||
-      date.getMonth() < minDate.getMonth() ||
-      date.getDate() < minDate.getDate()
-    ) {
-      return TimePicker.defaultProps.minDate
-    }
-    return minDate
-  }
-
-  getMaxTime(date?: Date) {
-    const maxDate = this.props.maxDate as Date
-    if (!date ||
-      date.getFullYear() > maxDate.getFullYear() ||
-      date.getMonth() > maxDate.getMonth() ||
-      date.getDate() > maxDate.getDate()
-    ) {
-      return TimePicker.defaultProps.maxDate
-    }
-    return maxDate
-  }
-
   render() {
     const {
       locale,
@@ -75,6 +51,8 @@ export default class TimePicker extends React.PureComponent<PropsType, {}> {
       prefixCls,
       pickerPrefixCls,
       clientHeight,
+      minDate,
+      maxDate,
     } = this.props
     const { date } = this.state
     const height = (clientHeight && clientHeight * 5 / 8 - 52) || Number.POSITIVE_INFINITY
@@ -95,8 +73,8 @@ export default class TimePicker extends React.PureComponent<PropsType, {}> {
           mode="month"
           date={date}
           locale={locale}
-          minDate={this.getMinTime(date)}
-          maxDate={this.getMaxTime(date)}
+          minDate={minDate}
+          maxDate={maxDate}
           onDateChange={this.onDateChange}
           use12Hours
         />
