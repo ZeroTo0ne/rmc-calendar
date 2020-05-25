@@ -71,7 +71,7 @@ export default class DatePicker extends Component {
           if (typeof y !== 'number' || typeof height !== 'number') continue
           if (y < top && top < (y + height)) {
             onChangeShowDateInfo && onChangeShowDateInfo(firstDate, title)
-            return
+            break
           }
         }
         scrollHandler(positionObj)
