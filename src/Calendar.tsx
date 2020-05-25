@@ -185,7 +185,7 @@ export default class Calendar extends React.PureComponent<
 
   onComeToday = () => {
     console.log(this.datePicker)
-    this.setState({ showDate: new Date(), startDate: new Date(), today: true }, () => {
+    this.setState({ showDate: new Date(), today: true }, () => {
       this.setState({ today: false })
     })
   }
