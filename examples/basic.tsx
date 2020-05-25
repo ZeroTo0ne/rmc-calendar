@@ -2,7 +2,7 @@
 
 import 'rmc-picker/assets/index.css';
 import 'rmc-date-picker/assets/index.css';
-import 'rmc-calendar/assets/index.less';
+import '../assets/index.less';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

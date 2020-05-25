@@ -3,10 +3,10 @@ import Animate from 'rc-animate';
 
 import TimePicker from './TimePicker'
 import DatePicker from './DatePicker'
-import ConfirmPanel from './Calendar/ConfirmPanel'
-import ShortcutPanel from './Calendar/ShortcutPanel'
-import AnimateWrapper from './Calendar/AnimateWrapper'
-import Header from './Calendar/Header'
+import ConfirmPanel from './calendar/ConfirmPanel'
+import ShortcutPanel from './calendar/ShortcutPanel'
+import AnimateWrapper from './calendar/AnimateWrapper'
+import Header from './calendar/Header'
 import { Models } from './date/DataTypes'
 import PropsType from './CalendarProps'
 

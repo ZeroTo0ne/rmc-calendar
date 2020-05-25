@@ -1,5 +1,5 @@
 import { Models } from './date/DataTypes'
-import { PropsType as HeaderPropsType } from './Calendar/Header'
+import { PropsType as HeaderPropsType } from './calendar/Header'
 
 export type SelectDateType = [Date, Date] | [Date];
 
