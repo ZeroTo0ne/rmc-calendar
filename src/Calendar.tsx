@@ -129,13 +129,7 @@ export default class Calendar extends React.PureComponent<
   onSelectedDate = (date: Date) => {
     const { startDate, endDate } = this.state
     const { onSelect } = this.props
-    if (onSelect) {
-      const value = onSelect(date, [startDate, endDate])
-      if (value) {
-        this.shortcutSelect(value[0], value[1])
-        return
-      }
-    }
+    onSelect && onSelect(date, [startDate, endDate])
     this.setState(this.selectDate(date, false, { startDate, endDate }))
   }
 

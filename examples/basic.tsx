@@ -106,10 +106,6 @@ class BasicDemo extends React.Component<{}, {
               startTime,
             });
           }}
-          // getDateExtra={(date) => {
-          //   return extra[+date];
-          // }}
-          // validRange={[new Date(+new Date() - 60 * 24 * 3600 * 1000), new Date(+new Date() + 60 * 24 * 3600 * 1000)]}
         />
       </div>
     );
