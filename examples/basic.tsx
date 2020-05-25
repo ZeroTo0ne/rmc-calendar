@@ -67,13 +67,9 @@ class BasicDemo extends React.Component<{}, {
   render() {
     return (
       <div style={{ marginTop: 10, marginBottom: 10, fontSize: 14 }}>
-        {this.renderBtn('选择日期区间', 'Select Date Range')}
-        {this.renderBtn('选择日期时间区间', 'Select DateTime Range')}
-        {this.renderBtn('选择日期', 'Select Date', { type: 'one' })}
-        {this.renderBtn('选择日期时间', 'Select DateTime', { type: 'one' })}
-        {this.renderBtn('选择日期区间(快捷)', 'Select Date Range (Shortcut)', { showShortcut: true })}
-        {this.renderBtn('选择日期时间区间(快捷)', 'Select DateTime Range (Shortcut)', { showShortcut: true })}
-        {this.renderBtn('默认选择范围', 'Selected Date Range', { defaultValue: [new Date(+new Date - 1 * 24 * 3600 * 1000), new Date(+new Date - 4 * 24 * 3600 * 1000)] })}
+        {this.renderBtn('选择日期', 'Select Date')}
+        {this.renderBtn('选择日期区间', 'Select Date Range', { type: 'range' })}
+        {this.renderBtn('默认选择范围', 'Selected Date Range', { type: 'range', defaultValue: [new Date(+new Date - 1 * 24 * 3600 * 1000), new Date(+new Date - 4 * 24 * 3600 * 1000)] })}
         {this.renderBtn('onSelectAPI', 'onSelectAPI', {
           onSelect: (date) => {
             console.log('onSelect', date);
