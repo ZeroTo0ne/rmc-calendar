@@ -145,13 +145,6 @@ export default class Calendar extends React.PureComponent<
     })
   }
 
-  onSelectHasDisableDate = (date: Date[]) => {
-    this.onClear()
-    if (this.props.onSelectHasDisableDate) {
-      this.props.onSelectHasDisableDate(date)
-    }
-  };
-
   onClose = () => {
     this.setState(new StateType())
   };
@@ -298,7 +291,6 @@ export default class Calendar extends React.PureComponent<
                   renderDateCellExtra={renderDateCellExtra}
                   renderDateFullCell={renderDateFullCell}
                   onChangeShowDateInfo={this.onChangeShowDateInfo}
-                  onSelectHasDisableDate={this.onSelectHasDisableDate}
                   onCellClick={this.onSelectedDate}
                 /> : null
             }

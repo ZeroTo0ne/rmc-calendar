@@ -106,9 +106,6 @@ class BasicDemo extends React.Component<{}, {
               startTime,
             });
           }}
-          onSelectHasDisableDate={(dates: Date[]) => {
-            console.warn('onSelectHasDisableDate', dates);
-          }}
           // getDateExtra={(date) => {
           //   return extra[+date];
           // }}

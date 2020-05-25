@@ -30,8 +30,6 @@ export default interface PropsType {
   /** 日期点击回调 */
   onCellClick?: (date: Date) => void;
   onLayout?: (clientHight: number) => void;
-  /** 选择区间包含不可用日期 */
-  onSelectHasDisableDate?: (date: Date[]) => void;
   /** 改变展示信息, 日期和头部标题 */
   onChangeShowDateInfo?: (showDate: Date, headerTitle: string) => void;
   /** (web only) 样式前缀 */

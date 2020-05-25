@@ -53,8 +53,6 @@ export default interface PropsType {
   firstDayOfMonth?: number;
   /** 设置周起始日(0-6)，default: 0 */
   firstDayOfWeek?: number;
-  /** 选择区间包含不可用日期 */
-  onSelectHasDisableDate?: (date: Date[]) => void;
   /** 选择日期回调，如果有返回值，选择范围将使用返回值 */
   onSelect?: (date: Date, state?: [Date | undefined, Date | undefined]) => SelectDateType | void;
 

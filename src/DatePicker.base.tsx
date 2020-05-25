@@ -165,7 +165,7 @@ export default abstract class DatePicker extends React.Component<PropsType, Stat
   }
 
   selectDateRange = (startDate: Date, endDate?: Date, clear = false) => {
-    const { renderDateCellExtra, type, onSelectHasDisableDate } = this.props
+    const { renderDateCellExtra, type } = this.props
     if (type === 'one') {
       endDate = undefined
     }
@@ -219,13 +219,6 @@ export default abstract class DatePicker extends React.Component<PropsType, Stat
           m.componentRef.forceUpdate()
         }
       })
-    if (unuseable.length > 0) {
-      if (onSelectHasDisableDate) {
-        onSelectHasDisableDate(unuseable.map(tick => new Date(tick)))
-      } else {
-        console.warn('Unusable date. You can handle by onSelectHasDisableDate.', unuseable)
-      }
-    }
   }
 
   computeVisible = (clientHeight: number, scrollTop: number) => {

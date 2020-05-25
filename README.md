@@ -128,8 +128,6 @@ interface PropsType {
     infiniteOpt?: boolean;
     /** inital generate months, default: 6 */
     initalMonths?: number;
-    /** select range has disable date */
-    onSelectHasDisableDate?: (date: Date[]) => void;
 }
 ```
 
