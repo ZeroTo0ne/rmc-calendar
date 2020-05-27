@@ -1,5 +1,4 @@
 import { Models } from './date/DataTypes'
-import { PropsType as HeaderPropsType } from './calendar/Header'
 
 export type SelectDateType = [Date, Date] | [Date];
 
@@ -16,8 +15,6 @@ export default interface PropsType {
   prefixCls?: string;
   /** 附加样式名称, default: '' */
   className?: string;
-  /** 替换标题栏 */
-  renderHeader?: (prop: HeaderPropsType) => React.ReactNode;
   style?: React.CSSProperties;
   /** header title, default: {locale.title} */
   title?: string;

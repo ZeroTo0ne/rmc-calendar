@@ -211,7 +211,6 @@ export default class Calendar extends React.PureComponent<
       locale = {} as Models.Locale,
       prefixCls,
       visible,
-      renderHeader,
       infinite,
       initalMonths,
       validRange = [],
@@ -236,16 +235,6 @@ export default class Calendar extends React.PureComponent<
       clientHight,
     } = this.state
 
-    const headerProps = {
-      locale,
-      showDate,
-      headerTitle,
-      showClear: !!startDate,
-      onClear: this.onClear,
-      onComeToday: this.onComeToday,
-      onSelectMonth: this.onSelectMonth,
-    }
-
     return (
       <div className={`${prefixCls}`} style={style}>
         <Animate showProp="visible" transitionName="fade">
@@ -253,11 +242,14 @@ export default class Calendar extends React.PureComponent<
         </Animate>
         <Animate showProp="visible" transitionName="slideV">
           <AnimateWrapper className="content" visible={!!visible && !showTimePicker}>
-            {renderHeader ? (
-              renderHeader(headerProps)
-            ) : (
-              <Header {...headerProps} />
-            )}
+            <Header
+              locale={locale}
+              headerTitle={headerTitle}
+              showClear={!!startDate}
+              onClear={this.onClear}
+              onComeToday={this.onComeToday}
+              onSelectMonth={this.onSelectMonth}
+            />
             {
               !today
                 ? <DatePicker
