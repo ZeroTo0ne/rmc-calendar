@@ -16,12 +16,8 @@ export default interface PropsType {
   prefixCls?: string;
   /** 附加样式名称, default: '' */
   className?: string;
-  /** 替换快捷选择栏，需要设置showShortcut: true */
-  renderShortcut?: (select: (startDate?: Date, endDate?: Date) => void) => React.ReactNode;
   /** 替换标题栏 */
   renderHeader?: (prop: HeaderPropsType) => React.ReactNode;
-  /** 快捷日期选择， default: false */
-  showShortcut?: boolean;
   style?: React.CSSProperties;
   /** header title, default: {locale.title} */
   title?: string;

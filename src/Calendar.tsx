@@ -4,7 +4,6 @@ import Animate from 'rc-animate';
 import TimePicker from './TimePicker'
 import DatePicker from './DatePicker'
 import ConfirmPanel from './calendar/ConfirmPanel'
-import ShortcutPanel from './calendar/ShortcutPanel'
 import AnimateWrapper from './calendar/AnimateWrapper'
 import Header from './calendar/Header'
 import { Models } from './date/DataTypes'
@@ -32,7 +31,6 @@ export default class Calendar extends React.PureComponent<
   StateType
 > {
   public static DefaultHeader = Header
-  public static DefaultShortcut = ShortcutPanel
 
   datePicker: any
 
@@ -40,7 +38,6 @@ export default class Calendar extends React.PureComponent<
     visible: false,
     showHeader: true,
     locale: defaultLocale,
-    showShortcut: false,
     prefixCls: 'rmc-calendar',
     type: 'one',
     defaultTimeValue: new Date(),
@@ -215,7 +212,6 @@ export default class Calendar extends React.PureComponent<
       locale = {} as Models.Locale,
       prefixCls,
       visible,
-      showShortcut,
       renderHeader,
       infiniteOpt,
       initalMonths,
@@ -223,7 +219,6 @@ export default class Calendar extends React.PureComponent<
       disabledDate,
       renderDateCellExtra,
       renderDateFullCell,
-      renderShortcut,
       timePickerPrefixCls,
       timePickerPickerPrefixCls,
       style,
@@ -288,13 +283,6 @@ export default class Calendar extends React.PureComponent<
                   onCellClick={this.onSelectedDate}
                 /> : null
             }
-            {showShortcut &&
-              !showTimePicker &&
-              (renderShortcut ? (
-                renderShortcut(this.shortcutSelect)
-              ) : (
-                <ShortcutPanel locale={locale} onSelect={this.shortcutSelect} />
-              ))}
             <ConfirmPanel
               type={type}
               locale={locale}

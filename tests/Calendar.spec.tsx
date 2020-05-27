@@ -16,18 +16,6 @@ describe('Calendar', () => {
     expect(renderToJson(wrapper)).toMatchSnapshot();
   });
 
-  it('show shortcut.', () => {
-    const wrapper = render(
-      <Calendar
-        defaultDate={new Date(2017, 7, 15)}
-        visible={true}
-        showShortcut={true}
-      />
-    );
-    expect(renderToJson(wrapper)).toMatchSnapshot();
-  });
-});
-
 describe('Calendar english.', () => {
   it('renders correctly', () => {
     const wrapper = render(
