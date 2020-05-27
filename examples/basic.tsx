@@ -70,6 +70,7 @@ class BasicDemo extends React.Component<{}, {
         {this.renderBtn('选择日期', 'Select Date')}
         {this.renderBtn('选择日期区间', 'Select Date Range', { type: 'range' })}
         {this.renderBtn('默认选择范围', 'Selected Date Range', { type: 'range', defaultValue: [new Date(+new Date - 1 * 24 * 3600 * 1000), new Date(+new Date - 4 * 24 * 3600 * 1000)] })}
+        {this.renderBtn('无限滚动优化', 'Select Date Range', { infinite: true })}
         {this.renderBtn('onSelectAPI', 'onSelectAPI', {
           onSelect: (date) => {
             console.log('onSelect', date);

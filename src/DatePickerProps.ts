@@ -14,7 +14,7 @@ export default interface PropsType {
   /** 自定义内容覆盖单元格 */
   renderDateFullCell?: (date: Date) => React.ReactNode;
   /** 无限滚动优化（大范围选择），default: false */
-  infiniteOpt?: boolean;
+  infinite?: boolean;
   /** 初始化月个数，default: 6 */
   initalMonths?: number;
   /** 本地化 */

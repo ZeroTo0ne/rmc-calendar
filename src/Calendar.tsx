@@ -84,7 +84,6 @@ export default class Calendar extends React.PureComponent<
     const {
       type,
       defaultTimeValue,
-      locale = {} as Models.Locale,
     } = props
     const newDate = !useDateTime ? mergeDateTime(date, defaultTimeValue) : date
     const { startDate, endDate } = oldState
@@ -213,7 +212,7 @@ export default class Calendar extends React.PureComponent<
       prefixCls,
       visible,
       renderHeader,
-      infiniteOpt,
+      infinite,
       initalMonths,
       validRange = [],
       disabledDate,
@@ -266,7 +265,7 @@ export default class Calendar extends React.PureComponent<
                   locale={locale}
                   type={type}
                   prefixCls={prefixCls}
-                  infiniteOpt={infiniteOpt}
+                  infinite={infinite}
                   initalMonths={initalMonths}
                   defaultDate={showDate}
                   minDate={validRange[0]}

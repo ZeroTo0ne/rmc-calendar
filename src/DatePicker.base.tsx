@@ -12,7 +12,6 @@ export default abstract class DatePicker extends React.Component<PropsType, Stat
   static defaultProps = {
     prefixCls: 'rmc-calendar',
     infinite: false,
-    infiniteOpt: false,
     defaultDate: new Date(),
     initalMonths: 6,
     locale: defaultLocale,
@@ -229,7 +228,7 @@ export default abstract class DatePicker extends React.Component<PropsType, Stat
     // 大缓冲区外过滤规则
     const filterFunc = (vm: Models.MonthData) => vm.y && vm.height && (vm.y + vm.height > scrollTop - MAX_VIEW_PORT && vm.y < scrollTop + clientHeight + MAX_VIEW_PORT)
 
-    if (this.props.infiniteOpt && this.visibleMonth.length > 12) {
+    if (this.props.infinite && this.visibleMonth.length > 12) {
       this.visibleMonth = this.visibleMonth.filter(filterFunc).sort((a, b) => +a.firstDate - +b.firstDate)
     }
 
