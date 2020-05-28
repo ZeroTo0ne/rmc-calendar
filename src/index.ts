@@ -1,6 +1,6 @@
 import { Models } from './panel/DataTypes';
 
-export { default as Calendar, ExtraData, PropsType as CalendarPropsType } from './Calendar';
+export { default as RMCCalendar, ExtraData, PropsType as CalendarPropsType } from './Calendar';
 export { default as CalendarPanel, PropsType as CalendarPanelPropsType } from './panel/CalendarPanel';
 
 import zhCN from './locale/zh_CN';

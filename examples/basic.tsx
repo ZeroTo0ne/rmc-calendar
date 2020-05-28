@@ -6,7 +6,7 @@ import '../assets/index.less';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Calendar, ExtraData, CalendarPropsType } from '../src';
+import { RMCCalendar, ExtraData, CalendarPropsType } from '../src';
 
 import zhCN from '../src/locale/zh_CN';
 import enUS from '../src/locale/en_US';
@@ -87,7 +87,7 @@ class BasicDemo extends React.Component<{}, {
             <p>结束时间：{this.state.endTime.toLocaleString()}</p>
           }
         </div>
-        <Calendar
+        <RMCCalendar
           locale={en ? enUS : zhCN}
           {...this.state.config}
           visible={this.state.show}
