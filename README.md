@@ -49,7 +49,7 @@ online example: http://gem-mine.github.io/rmc-calendar/
 ```jsx
 import React, { Component } from 'react';
 
-import { Calendar } from '@gem-mine/rmc-calendar';
+import { RMCCalendar } from '@gem-mine/rmc-calendar';
 import '@gem-mine/rmc-calendar/assets/index.css';
 
 class App extends Component {
