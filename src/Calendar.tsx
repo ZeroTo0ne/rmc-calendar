@@ -47,9 +47,9 @@ export default class Calendar extends React.PureComponent<
     super(props)
 
     this.state = new StateType()
-    if (props.value || props.defaultValue) {
+    const value = props.value || props.defaultValue
+    if (value) {
       const { locale } = props
-      const value = props.value || props.defaultValue
       this.state = {
         ...this.state,
         ...this.selectDate(
@@ -63,8 +63,8 @@ export default class Calendar extends React.PureComponent<
   }
 
   componentWillReceiveProps(nextProps: PropsType) {
-    if (!this.props.visible && nextProps.visible && (nextProps.value || nextProps.defaultValue)) {
-      const value = nextProps.value || nextProps.defaultValue
+    const value = nextProps.value || nextProps.defaultValue
+    if (!this.props.visible && nextProps.visible && value) {
       this.shortcutSelect(
         value[0],
         value[1],
@@ -74,9 +74,9 @@ export default class Calendar extends React.PureComponent<
   }
 
   selectDate = (
-    date: Date,
+    date: Date | undefined,
     useDateTime = false,
-    oldState: { startDate?: Date; endDate?: Date, showDate?: Date } = {},
+    oldState: { startDate?: Date; endDate?: Date, showDate?: Date, headerTitle?: string, today?: boolean } = {},
     props = this.props,
   ) => {
     if (!date) return {} as StateType
@@ -190,7 +190,7 @@ export default class Calendar extends React.PureComponent<
     this.props.onClear && this.props.onClear()
   };
 
-  shortcutSelect = (startDate: Date, endDate: Date, props = this.props) => {
+  shortcutSelect = (startDate: Date, endDate: Date | undefined, props = this.props) => {
     this.setState({
       startDate,
       headerTitle: formatDate(startDate, props.locale ? props.locale.monthTitle : 'yyyy/MM', props.locale),
