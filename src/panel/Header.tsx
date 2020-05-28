@@ -40,7 +40,7 @@ export default class Header extends React.PureComponent<PropsType, {}> {
           {showClear && (clearIcon || locale.clear)}
         </span>
         <span className="title" onClick={this.onSelectMonth}>{headerTitle || locale.title}</span>
-        <div className="come-today" onClick={this.onComeToday}>今天</div>
+        <div className="come-today" onClick={this.onComeToday}>{locale.today}</div>
       </div>
     )
   }
