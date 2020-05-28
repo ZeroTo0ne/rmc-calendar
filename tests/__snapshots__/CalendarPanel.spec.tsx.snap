@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DatePicker renders correctly 1`] = `
+exports[`CalendarPanel renders correctly 1`] = `
 <div
   class="rmc-calendar date-picker"
 >

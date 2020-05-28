@@ -2,7 +2,7 @@ import React from 'react'
 import Animate from 'rc-animate';
 
 import TimePicker from './TimePicker'
-import DatePicker from './DatePicker'
+import CalendarPanel from './CalendarPanel'
 import ConfirmPanel from './calendar/ConfirmPanel'
 import AnimateWrapper from './calendar/AnimateWrapper'
 import Header from './calendar/Header'
@@ -252,7 +252,7 @@ export default class Calendar extends React.PureComponent<
             />
             {
               !today
-                ? <DatePicker
+                ? <CalendarPanel
                   ref={(node) => (this.datePicker = node)}
                   locale={locale}
                   type={type}

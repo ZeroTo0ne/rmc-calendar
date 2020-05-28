@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Models } from './date/DataTypes'
-import PropsType from './DatePickerProps'
+import PropsType from './CalendarPanelProps'
 import { formatDate, shallowEqual } from './util'
 
 import defaultLocale from './locale/zh_CN'
@@ -8,7 +8,7 @@ import defaultLocale from './locale/zh_CN'
 export interface StateType {
   months: Models.MonthData[]
 }
-export default abstract class DatePicker extends React.Component<PropsType, StateType> {
+export default abstract class CalendarPanel extends React.Component<PropsType, StateType> {
   static defaultProps = {
     prefixCls: 'rmc-calendar',
     infinite: false,

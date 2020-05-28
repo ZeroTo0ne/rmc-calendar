@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import PropsType from './DatePickerProps'
-import Component from './DatePicker.base'
+import PropsType from './CalendarPanelProps'
+import Component from './CalendarPanel.base'
 import WeekPanel from './date/WeekPanel'
 import SingleMonth from './date/SingleMonth'
 import { Models } from './date/DataTypes'

@@ -2,14 +2,14 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-15';
 import { default as Enzyme, render } from 'enzyme';
 import { renderToJson } from 'enzyme-to-json';
-import { DatePicker } from '../src';
+import { CalendarPanel } from '../src';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('DatePicker', () => {
+describe('CalendarPanel', () => {
   it('renders correctly', () => {
     const wrapper = render(
-      <DatePicker
+      <CalendarPanel
       />
     );
     expect(renderToJson(wrapper)).toMatchSnapshot();

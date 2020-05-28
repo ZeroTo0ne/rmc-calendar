@@ -111,7 +111,7 @@ interface PropsType {
   /** 默认展示，开始时间、结束时间 */
   defaultValue?: SelectDateType;
 
-  // DatePicker
+  // CalendarPanel
   /** 显示开始日期，default: today */
   defaultDate?: Date;
   /** 自定义内容追加到单元格内 */
