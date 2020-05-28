@@ -7,6 +7,8 @@ import ConfirmPanel from './panel/ConfirmPanel'
 export interface PropsType {
   locale: Models.Locale;
   title?: string;
+  prefixCls?: string;
+  pickerPrefixCls?: string;
   defaultValue?: Date;
   onTimeOk: (date: Date) => void;
   onCancel: () => void;
@@ -46,6 +48,8 @@ export default class DatePicker extends React.PureComponent<PropsType, {}> {
     const {
       locale,
       title,
+      prefixCls,
+      pickerPrefixCls,
       clientHeight,
       minDate,
       maxDate,
@@ -60,6 +64,8 @@ export default class DatePicker extends React.PureComponent<PropsType, {}> {
           {date ? <div className="time-show">{`${date.getFullYear()}-${date.getMonth() + 1}`}</div> : null}
         </div>
         <RMCDatePicker
+          prefixCls={prefixCls}
+          pickerPrefixCls={pickerPrefixCls}
           style={{
             height: height > 164 || height < 0 ? 164 : height,
             overflow: 'hidden',

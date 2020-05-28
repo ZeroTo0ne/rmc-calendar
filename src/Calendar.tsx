@@ -218,6 +218,8 @@ export default class Calendar extends React.PureComponent<
       disabledDate,
       renderDateCellExtra,
       renderDateFullCell,
+      datePickerPrefixCls,
+      datePickerPickerPrefixCls,
       style,
       title,
       firstDayOfMonth,
@@ -288,6 +290,8 @@ export default class Calendar extends React.PureComponent<
         <Animate showProp="visible" transitionName="slideV">
           <AnimateWrapper className="picker" visible={!!showDatePicker}>
             <DatePicker
+              prefixCls={datePickerPrefixCls}
+              pickerPrefixCls={datePickerPickerPrefixCls}
               locale={locale}
               title={title}
               defaultValue={showDate}

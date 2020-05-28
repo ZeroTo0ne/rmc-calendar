@@ -52,4 +52,6 @@ export default interface PropsType {
   // DatePicker
   /** 默认时间选择值 */
   defaultTimeValue?: Date;
+  datePickerPrefixCls?: string;
+  datePickerPickerPrefixCls?: string;
 }
