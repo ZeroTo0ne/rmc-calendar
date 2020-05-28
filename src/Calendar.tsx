@@ -2,11 +2,11 @@ import React from 'react'
 import Animate from 'rc-animate';
 
 import TimePicker from './TimePicker'
-import CalendarPanel from './CalendarPanel'
+import CalendarPanel from './panel/CalendarPanel'
 import ConfirmPanel from './calendar/ConfirmPanel'
 import AnimateWrapper from './calendar/AnimateWrapper'
 import Header from './calendar/Header'
-import { Models } from './date/DataTypes'
+import { Models } from './panel/DataTypes'
 import PropsType from './CalendarProps'
 
 import { mergeDateTime, formatDate } from './util'

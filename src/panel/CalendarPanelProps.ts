@@ -1,4 +1,4 @@
-import { Models } from './date/DataTypes'
+import { Models } from './DataTypes'
 
 export default interface PropsType {
   /** 默认日期，default: today */

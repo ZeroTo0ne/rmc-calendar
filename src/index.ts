@@ -1,7 +1,7 @@
-import { Models } from './date/DataTypes';
+import { Models } from './panel/DataTypes';
 
 export { default as Calendar, ExtraData, PropsType as CalendarPropsType } from './Calendar';
-export { default as CalendarPanel, PropsType as CalendarPanelPropsType } from './CalendarPanel';
+export { default as CalendarPanel, PropsType as CalendarPanelPropsType } from './panel/CalendarPanel';
 
 import zhCN from './locale/zh_CN';
 import enUS from './locale/en_US';

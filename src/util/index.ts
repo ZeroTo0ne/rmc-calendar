@@ -1,4 +1,4 @@
-import { Models } from '../date/DataTypes';
+import { Models } from '../panel/DataTypes';
 
 export const mergeDateTime = (date?: Date, time?: Date) => {
   date = date || new Date;

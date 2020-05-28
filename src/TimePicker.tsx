@@ -1,7 +1,7 @@
 import React from 'react'
 import DatePicker from 'rmc-date-picker'
 
-import { Models } from './date/DataTypes'
+import { Models } from './panel/DataTypes'
 import ConfirmPanel from './calendar/ConfirmPanel'
 
 export interface PropsType {

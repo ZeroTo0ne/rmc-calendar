@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Models } from '../date/DataTypes'
+import { Models } from '../panel/DataTypes'
 
 export interface PropsType {
   headerTitle?: string;

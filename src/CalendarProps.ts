@@ -1,4 +1,4 @@
-import { Models } from './date/DataTypes'
+import { Models } from './panel/DataTypes'
 
 export type SelectDateType = [Date, Date] | [Date];
 

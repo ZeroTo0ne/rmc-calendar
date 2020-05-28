@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { formatDate } from '../util'
-import { Models } from '../date/DataTypes'
+import { Models } from '../panel/DataTypes'
 
 export interface ConfirmPanelPropsType {
   type?: 'one' | 'range';

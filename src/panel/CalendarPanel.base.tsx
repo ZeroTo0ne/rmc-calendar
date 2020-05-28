@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { Models } from './date/DataTypes'
+import { Models } from './DataTypes'
 import PropsType from './CalendarPanelProps'
-import { formatDate, shallowEqual } from './util'
+import { formatDate, shallowEqual } from '../util'
 
-import defaultLocale from './locale/zh_CN'
+import defaultLocale from '../locale/zh_CN'
 
 export interface StateType {
   months: Models.MonthData[]

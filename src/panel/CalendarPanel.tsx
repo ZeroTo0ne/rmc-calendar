@@ -2,9 +2,9 @@ import * as React from 'react'
 
 import PropsType from './CalendarPanelProps'
 import Component from './CalendarPanel.base'
-import WeekPanel from './date/WeekPanel'
-import SingleMonth from './date/SingleMonth'
-import { Models } from './date/DataTypes'
+import WeekPanel from './WeekPanel'
+import SingleMonth from './SingleMonth'
+import { Models } from './DataTypes'
 
 export { PropsType }
 export default class DatePicker extends Component {
