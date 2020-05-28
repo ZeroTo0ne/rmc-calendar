@@ -15,6 +15,7 @@ describe('Calendar', () => {
     );
     expect(renderToJson(wrapper)).toMatchSnapshot();
   });
+});
 
 describe('Calendar english.', () => {
   it('renders correctly', () => {
