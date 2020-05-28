@@ -236,7 +236,7 @@ export default class Calendar extends React.PureComponent<
     return (
       <div className={`${prefixCls}`} style={style}>
         <Animate showProp="visible" transitionName="fade">
-          <AnimateWrapper className="mask" visible={!!visible} />
+          <AnimateWrapper className="mask" visible={!!visible} onClose={this.onCancel} />
         </Animate>
         <Animate showProp="visible" transitionName="slideV">
           <AnimateWrapper className="content" visible={!!visible && !showDatePicker}>

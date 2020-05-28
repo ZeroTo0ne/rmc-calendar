@@ -4,6 +4,7 @@ export interface PropsType {
   visible: boolean;
   className?: string;
   displayType?: string;
+  onClose?: () => void;
 }
 export default class AnimateWrapper extends React.PureComponent<PropsType, {}> {
   static defaultProps = {
@@ -12,12 +13,13 @@ export default class AnimateWrapper extends React.PureComponent<PropsType, {}> {
   } as PropsType
 
   render() {
-    const { className, displayType, visible } = this.props
+    const { className, displayType, visible, onClose } = this.props
 
     return (
       <div
         className={className + ' animate'}
         style={{ display: visible ? displayType : 'none' }}
+        onClick={onClose}
       >
         {visible && this.props.children}
       </div>
