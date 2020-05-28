@@ -17,7 +17,7 @@ export type ExtraData = Models.ExtraData
 export { PropsType }
 
 export class StateType {
-  today?: boolean = false
+  returnToday?: boolean = false
   showDatePicker?: boolean = false
   showDate?: Date = undefined
   headerTitle?: string
@@ -40,6 +40,7 @@ export default class Calendar extends React.PureComponent<
     locale: defaultLocale,
     prefixCls: 'rmc-calendar',
     type: 'one',
+    value: [new Date()],
     defaultTimeValue: new Date(),
   } as PropsType
 
@@ -55,7 +56,7 @@ export default class Calendar extends React.PureComponent<
         ...this.selectDate(
           value[1],
           true,
-          { startDate: value[0], showDate: value[0], headerTitle: formatDate(value[0], locale ? locale.monthTitle : 'yyyy/MM', locale), today: false },
+          { startDate: value[0], showDate: value[0], headerTitle: formatDate(value[0], locale ? locale.monthTitle : 'yyyy/MM', locale), returnToday: false },
           props,
         ),
       }
@@ -76,7 +77,7 @@ export default class Calendar extends React.PureComponent<
   selectDate = (
     date: Date | undefined,
     useDateTime = false,
-    oldState: { startDate?: Date; endDate?: Date, showDate?: Date, headerTitle?: string, today?: boolean } = {},
+    oldState: { startDate?: Date; endDate?: Date, showDate?: Date, headerTitle?: string, returnToday?: boolean } = {},
     props = this.props,
   ) => {
     if (!date) return {} as StateType
@@ -175,8 +176,8 @@ export default class Calendar extends React.PureComponent<
 
   onComeToday = () => {
     console.log(this.datePicker)
-    this.setState({ showDate: new Date(), today: true }, () => {
-      this.setState({ today: false })
+    this.setState({ showDate: new Date(), returnToday: true }, () => {
+      this.setState({ returnToday: false })
     })
   }
 
@@ -223,7 +224,7 @@ export default class Calendar extends React.PureComponent<
       firstDayOfWeek,
     } = this.props
     const {
-      today,
+      returnToday,
       showDatePicker,
       startDate,
       endDate,
@@ -249,7 +250,7 @@ export default class Calendar extends React.PureComponent<
               onSelectMonth={this.onSelectMonth}
             />
             {
-              !today
+              !returnToday
                 ? <CalendarPanel
                   ref={(node) => (this.datePicker = node)}
                   locale={locale}
