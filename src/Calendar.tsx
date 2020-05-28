@@ -1,7 +1,7 @@
 import React from 'react'
 import Animate from 'rc-animate';
 
-import TimePicker from './TimePicker'
+import DatePicker from './DatePicker'
 import CalendarPanel from './panel/CalendarPanel'
 import ConfirmPanel from './panel/ConfirmPanel'
 import AnimateWrapper from './panel/AnimateWrapper'
@@ -18,7 +18,7 @@ export { PropsType }
 
 export class StateType {
   today?: boolean = false
-  showTimePicker?: boolean = false
+  showDatePicker?: boolean = false
   showDate?: Date = undefined
   headerTitle?: string
   startDate?: Date = undefined
@@ -131,7 +131,7 @@ export default class Calendar extends React.PureComponent<
 
   onSelectMonth = () => {
     this.setState({
-      showTimePicker: true,
+      showDatePicker: true,
     })
   }
 
@@ -157,7 +157,7 @@ export default class Calendar extends React.PureComponent<
   onTimeOk = (date: Date) => {
     const { locale } = this.props
     this.setState({
-      showTimePicker: false,
+      showDatePicker: false,
       showDate: date,
       headerTitle: formatDate(date, locale ? locale.monthTitle : 'yyyy/MM', locale),
     })
@@ -165,7 +165,7 @@ export default class Calendar extends React.PureComponent<
 
   onTimeCancel = () => {
     this.setState({
-      showTimePicker: false,
+      showDatePicker: false,
     })
   }
 
@@ -184,7 +184,7 @@ export default class Calendar extends React.PureComponent<
     this.setState({
       startDate: undefined,
       endDate: undefined,
-      showTimePicker: false,
+      showDatePicker: false,
       showDate: new Date(),
     })
     this.props.onClear && this.props.onClear()
@@ -195,7 +195,7 @@ export default class Calendar extends React.PureComponent<
       startDate,
       headerTitle: formatDate(startDate, props.locale ? props.locale.monthTitle : 'yyyy/MM', props.locale),
       ...this.selectDate(endDate, true, { startDate }, props),
-      showTimePicker: false,
+      showDatePicker: false,
     })
   };
 
@@ -217,8 +217,6 @@ export default class Calendar extends React.PureComponent<
       disabledDate,
       renderDateCellExtra,
       renderDateFullCell,
-      timePickerPrefixCls,
-      timePickerPickerPrefixCls,
       style,
       title,
       firstDayOfMonth,
@@ -226,7 +224,7 @@ export default class Calendar extends React.PureComponent<
     } = this.props
     const {
       today,
-      showTimePicker,
+      showDatePicker,
       startDate,
       endDate,
       showDate,
@@ -241,7 +239,7 @@ export default class Calendar extends React.PureComponent<
           <AnimateWrapper className="mask" visible={!!visible} />
         </Animate>
         <Animate showProp="visible" transitionName="slideV">
-          <AnimateWrapper className="content" visible={!!visible && !showTimePicker}>
+          <AnimateWrapper className="content" visible={!!visible && !showDatePicker}>
             <Header
               locale={locale}
               headerTitle={headerTitle}
@@ -287,10 +285,8 @@ export default class Calendar extends React.PureComponent<
           </AnimateWrapper>
         </Animate>
         <Animate showProp="visible" transitionName="slideV">
-          <AnimateWrapper className="picker" visible={!!showTimePicker}>
-            <TimePicker
-              prefixCls={timePickerPrefixCls}
-              pickerPrefixCls={timePickerPickerPrefixCls}
+          <AnimateWrapper className="picker" visible={!!showDatePicker}>
+            <DatePicker
               locale={locale}
               title={title}
               defaultValue={showDate}

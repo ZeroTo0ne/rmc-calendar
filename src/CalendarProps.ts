@@ -49,9 +49,7 @@ export default interface PropsType {
   /** 选择日期回调，如果有返回值，选择范围将使用返回值 */
   onSelect?: (date: Date, state?: [Date | undefined, Date | undefined]) => SelectDateType | void;
 
-  // TimePicker
+  // DatePicker
   /** 默认时间选择值 */
   defaultTimeValue?: Date;
-  timePickerPrefixCls?: string;
-  timePickerPickerPrefixCls?: string;
 }

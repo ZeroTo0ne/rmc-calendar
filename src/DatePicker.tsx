@@ -1,13 +1,11 @@
 import React from 'react'
-import DatePicker from 'rmc-date-picker'
+import RMCDatePicker from 'rmc-date-picker'
 
 import { Models } from './panel/DataTypes'
 import ConfirmPanel from './panel/ConfirmPanel'
 
 export interface PropsType {
   locale: Models.Locale;
-  prefixCls?: string;
-  pickerPrefixCls?: string;
   title?: string;
   defaultValue?: Date;
   onTimeOk: (date: Date) => void;
@@ -18,10 +16,10 @@ export interface PropsType {
   clientHeight?: number;
 }
 
-export default class TimePicker extends React.PureComponent<PropsType, {}> {
+export default class DatePicker extends React.PureComponent<PropsType, {}> {
   static defaultProps = {
-    minDate: new Date(0, 0, 0, 0, 0),
-    maxDate: new Date(3000, 11, 31, 23, 59, 59),
+    minDate: new Date(1900, 0, 0, 0, 0),
+    maxDate: new Date(2100, 11, 31, 23, 59, 59),
     defaultValue: new Date(),
   } as PropsType;
 
@@ -48,8 +46,6 @@ export default class TimePicker extends React.PureComponent<PropsType, {}> {
     const {
       locale,
       title,
-      prefixCls,
-      pickerPrefixCls,
       clientHeight,
       minDate,
       maxDate,
@@ -63,9 +59,7 @@ export default class TimePicker extends React.PureComponent<PropsType, {}> {
           <div className="title">{title || locale.title}</div>
           {date ? <div className="time-show">{`${date.getFullYear()}-${date.getMonth() + 1}`}</div> : null}
         </div>
-        <DatePicker
-          prefixCls={prefixCls}
-          pickerPrefixCls={pickerPrefixCls}
+        <RMCDatePicker
           style={{
             height: height > 164 || height < 0 ? 164 : height,
             overflow: 'hidden',
@@ -76,7 +70,6 @@ export default class TimePicker extends React.PureComponent<PropsType, {}> {
           minDate={minDate}
           maxDate={maxDate}
           onDateChange={this.onDateChange}
-          use12Hours
         />
         <ConfirmPanel
           type="one"

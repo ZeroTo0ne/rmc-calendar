@@ -168,7 +168,7 @@ export default class DatePicker extends Component {
     }
 
     return (
-      <div className={`${prefixCls} date-picker`}>
+      <div className={`${prefixCls} calendar-panel`}>
         <WeekPanel locale={locale} firstDayOfWeek={firstDayOfWeek} />
         <div
           className="wrapper"
