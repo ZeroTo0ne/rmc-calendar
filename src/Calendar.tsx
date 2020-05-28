@@ -3,9 +3,9 @@ import Animate from 'rc-animate';
 
 import TimePicker from './TimePicker'
 import CalendarPanel from './panel/CalendarPanel'
-import ConfirmPanel from './calendar/ConfirmPanel'
-import AnimateWrapper from './calendar/AnimateWrapper'
-import Header from './calendar/Header'
+import ConfirmPanel from './panel/ConfirmPanel'
+import AnimateWrapper from './panel/AnimateWrapper'
+import Header from './panel/Header'
 import { Models } from './panel/DataTypes'
 import PropsType from './CalendarProps'
 

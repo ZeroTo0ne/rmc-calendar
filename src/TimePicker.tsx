@@ -2,7 +2,7 @@ import React from 'react'
 import DatePicker from 'rmc-date-picker'
 
 import { Models } from './panel/DataTypes'
-import ConfirmPanel from './calendar/ConfirmPanel'
+import ConfirmPanel from './panel/ConfirmPanel'
 
 export interface PropsType {
   locale: Models.Locale;
