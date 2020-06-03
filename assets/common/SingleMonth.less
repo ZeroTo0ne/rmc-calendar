@@ -15,17 +15,18 @@
     display: block;
     position: absolute;
     line-height: 12 * @hd;
-    color: rgba(16,142,233, 0.15);
-    zoom: 22;
+    color: rgba(16,142,233, .05);
+    font-weight: bold;
+    zoom: 20;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     pointer-events: none;
   }
 
   .month-title {
     position: relative;
     margin: 0;
-    padding: @v-spacing-xl 0;
     text-align: center;
     font-size: @font-size-heading;
     color: @color-text-placeholder;
@@ -56,7 +57,7 @@
   .row {
     display: flex;
     align-items: baseline;
-    @cell-size: 35 * @hd;
+    @cell-size: 32 * @hd;
 
     .cell {
       display: flex;
@@ -71,7 +72,6 @@
         width: 100%;
         justify-content: center;
         align-items: center;
-        margin-bottom: 2 * @hd;
 
         .date {
           display: flex;
@@ -140,7 +140,7 @@
       }
 
       .info {
-        height: @font-size-subhead;
+        height: @font-size-caption-sm;
         padding: 0 5 * @hd;
       }
 
@@ -153,13 +153,5 @@
         color: @brand-primary;
       }
     }
-  }
-
-  .row + .row {
-    margin-top: @v-spacing-sm;
-  }
-
-  .row-xl + .row-xl {
-    margin-top: @v-spacing-xl;
   }
 }
