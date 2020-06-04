@@ -40,7 +40,7 @@ export default class Calendar extends React.PureComponent<
     locale: defaultLocale,
     prefixCls: 'rmc-calendar',
     type: 'one',
-    value: [new Date()],
+    value: [],
     defaultTimeValue: new Date(),
   } as PropsType
 
@@ -49,7 +49,7 @@ export default class Calendar extends React.PureComponent<
 
     this.state = new StateType()
     const value = props.value || props.defaultValue
-    if (value) {
+    if (value && value.length > 0) {
       const { locale } = props
       this.state = {
         ...this.state,
@@ -65,7 +65,7 @@ export default class Calendar extends React.PureComponent<
 
   componentWillReceiveProps(nextProps: PropsType) {
     const value = nextProps.value || nextProps.defaultValue
-    if (!this.props.visible && nextProps.visible && value) {
+    if (!this.props.visible && nextProps.visible && value && value.length > 0) {
       this.shortcutSelect(
         value[0],
         value[1],

@@ -1,6 +1,6 @@
 import { Models } from './panel/DataTypes'
 
-export type SelectDateType = [Date, Date] | [Date];
+export type SelectDateType = [Date, Date] | [Date] | [];
 
 export default interface PropsType {
   /** 本地化 */
