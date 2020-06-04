@@ -14,6 +14,8 @@ import { mergeDateTime, formatDate } from './util'
 import defaultLocale from './locale/zh_CN'
 
 export type ExtraData = Models.ExtraData
+export type CellData = Models.CellData
+
 export { PropsType }
 
 export class StateType {

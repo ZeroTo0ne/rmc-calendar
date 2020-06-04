@@ -7,7 +7,7 @@ export interface PropsType {
   today?: Date;
   disabledDate?: (current: Date) => boolean;
   renderDateCellExtra?: (date: Date) => Models.ExtraData;
-  renderDateFullCell?: (date: Date) => React.ReactNode;
+  renderDateFullCell?: (data: Models.CellData) => React.ReactNode;
   onCellClick?: (data: Models.CellData, monthData: Models.MonthData) => void;
 }
 export default class SingleMonth extends React.PureComponent<PropsType, {
@@ -139,7 +139,7 @@ export default class SingleMonth extends React.PureComponent<PropsType, {
                 !disable && onCellClick && onCellClick(day, monthData)
               }}
               >
-                {renderDateFullCell ? renderDateFullCell(new Date(day.tick)) : defaultContent}
+                {renderDateFullCell ? renderDateFullCell(day) : defaultContent}
               </div>
             )
           })

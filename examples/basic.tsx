@@ -6,7 +6,7 @@ import '../assets/index.less';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { RMCCalendar, ExtraData, CalendarPropsType } from '../src';
+import { RMCCalendar, ExtraData, CellData, CalendarPropsType } from '../src';
 
 import zhCN from '../src/locale/zh_CN';
 import enUS from '../src/locale/en_US';
@@ -50,6 +50,27 @@ class BasicDemo extends React.Component<{}, {
     };
   }
 
+  renderDateFullCell = (data: CellData) => {
+    if (!data.tick) return null;
+    let style = {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 53,
+      height: 62,
+      flexShink: 0,
+      color: '#068EEF',
+      fontWeight: 'bold',
+      fontSize: 18
+    } as React.CSSProperties
+
+    if (data.selected) {
+      style = {...style, width: 45, height: 45, color: '#000', border: '2px solid #000'}
+    }
+
+    return (<div style={style}>{data.dayOfMonth}</div>)
+  }
+
   renderBtn(text: string, text2: string, config: CalendarPropsType = {}) {
     return <div style={{ background: '#1A7BE6', padding: 5, margin: 10, textAlign: 'center' }}
       onClick={() => {
@@ -70,7 +91,8 @@ class BasicDemo extends React.Component<{}, {
         {this.renderBtn('选择日期', 'Select Date')}
         {this.renderBtn('选择日期区间', 'Select Date Range', { type: 'range' })}
         {this.renderBtn('默认选择范围', 'Selected Date Range', { type: 'range', defaultValue: [new Date(+new Date - 1 * 24 * 3600 * 1000), new Date(+new Date - 4 * 24 * 3600 * 1000)] })}
-        {this.renderBtn('无限滚动优化', 'Select Date Range', { infinite: true })}
+        {this.renderBtn('无限滚动优化', 'infinity scroll', { infinite: true })}
+        {this.renderBtn('自定义单元格', 'cell render by youself', { renderDateFullCell: this.renderDateFullCell })}
         {this.renderBtn('onSelectAPI', 'onSelectAPI', {
           onSelect: (date) => {
             console.log('onSelect', date);

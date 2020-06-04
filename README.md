@@ -117,7 +117,7 @@ interface PropsType {
   /** 自定义内容追加到单元格内 */
   renderDateCellExtra?: (date: Date) => Models.ExtraData,
   /** 自定义内容覆盖单元格 */
-  renderDateFullCell?: (date: Date) => React.ReactNode,
+  renderDateFullCell?: (data: Models.CellData) => React.ReactNode,
   /** 无限滚动优化（大范围选择），default: false */
   infinite?: boolean;
   /** 初始化月个数，default: 6 */
