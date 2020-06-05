@@ -10,9 +10,9 @@ export default interface PropsType {
   /** 不可选日期 */
   disabledDate?: (current: Date) => boolean;
   /** 自定义内容追加到单元格内 */
-  renderDateCellExtra?: (date: Date) => Models.ExtraData;
+  renderDateCellExtra?: (date: Date) => Models.ExtraData | void;
   /** 自定义内容覆盖单元格 */
-  renderDateFullCell?: (data: Models.CellData) => React.ReactNode;
+  renderDateFullCell?: (data: Models.CellData) => React.ReactNode | void;
   /** 无限滚动优化（大范围选择），default: false */
   infinite?: boolean;
   /** 初始化月个数，default: 6 */

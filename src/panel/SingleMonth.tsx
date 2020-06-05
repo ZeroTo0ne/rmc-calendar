@@ -6,8 +6,8 @@ export interface PropsType {
   monthData: Models.MonthData;
   today?: Date;
   disabledDate?: (current: Date) => boolean;
-  renderDateCellExtra?: (date: Date) => Models.ExtraData;
-  renderDateFullCell?: (data: Models.CellData) => React.ReactNode;
+  renderDateCellExtra?: (date: Date) => Models.ExtraData | void;
+  renderDateFullCell?: (data: Models.CellData) => React.ReactNode | void;
   onCellClick?: (data: Models.CellData, monthData: Models.MonthData) => void;
 }
 export default class SingleMonth extends React.PureComponent<PropsType, {
