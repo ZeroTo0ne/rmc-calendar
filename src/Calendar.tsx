@@ -177,8 +177,14 @@ export default class Calendar extends React.PureComponent<
   }
 
   onComeToday = () => {
-    console.log(this.datePicker)
-    this.setState({ showDate: new Date(), returnToday: true }, () => {
+    const today = new Date()
+    this.setState({ 
+      showDate: today, 
+      startDate: today, 
+      endDate: today, 
+      returnToday: true, 
+      disConfirmBtn: false,
+    }, () => {
       this.setState({ returnToday: false })
     })
   }
@@ -189,6 +195,7 @@ export default class Calendar extends React.PureComponent<
       endDate: undefined,
       showDatePicker: false,
       showDate: new Date(),
+      disConfirmBtn: true
     })
     this.props.onClear && this.props.onClear()
   };
