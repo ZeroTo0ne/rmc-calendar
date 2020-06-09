@@ -43,6 +43,7 @@ export default class Calendar extends React.PureComponent<
     prefixCls: 'rmc-calendar',
     type: 'one',
     value: [],
+    validRange: [new Date(1900, 0, 0, 0, 0), new Date(2100, 11, 31, 23, 59, 59)],
     defaultTimeValue: new Date(),
   } as PropsType
 
