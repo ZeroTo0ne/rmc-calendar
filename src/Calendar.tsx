@@ -51,9 +51,9 @@ export default class Calendar extends React.PureComponent<
     super(props)
 
     this.state = new StateType()
+    const { locale } = props
     const value = props.value || props.defaultValue
     if (value && value.length > 0) {
-      const { locale } = props
       this.state = {
         ...this.state,
         ...this.selectDate(
@@ -62,6 +62,11 @@ export default class Calendar extends React.PureComponent<
           { startDate: value[0], showDate: value[0], headerTitle: formatDate(value[0], locale ? locale.monthTitle : 'yyyy/MM', locale), returnToday: false },
           props,
         ),
+      }
+    } else {
+      this.state = {
+        ...this.state,
+        headerTitle: formatDate(new Date(), locale ? locale.monthTitle : 'yyyy/MM', locale)
       }
     }
   }
@@ -178,6 +183,7 @@ export default class Calendar extends React.PureComponent<
   }
 
   onComeToday = () => {
+    const { locale } = this.props
     const today = new Date()
     this.setState({ 
       showDate: today, 
@@ -185,6 +191,7 @@ export default class Calendar extends React.PureComponent<
       endDate: today, 
       returnToday: true, 
       disConfirmBtn: false,
+      headerTitle: formatDate(today, locale ? locale.monthTitle : 'yyyy/MM', locale)
     }, () => {
       this.setState({ returnToday: false })
     })
