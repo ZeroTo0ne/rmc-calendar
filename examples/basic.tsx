@@ -90,7 +90,7 @@ class BasicDemo extends React.Component<{}, {
       <div style={{ marginTop: 10, marginBottom: 10, fontSize: 14 }}>
         {this.renderBtn('选择日期', 'Select Date')}
         {this.renderBtn('选择日期区间', 'Select Date Range', { type: 'range' })}
-        {this.renderBtn('默认选择范围', 'Selected Date Range', { type: 'range', defaultValue: [new Date(+new Date - 1 * 24 * 3600 * 1000), new Date(+new Date - 4 * 24 * 3600 * 1000)] })}
+        {this.renderBtn('默认选择范围', 'Selected Date Range', { type: 'range', value: [new Date(+new Date - 1 * 24 * 3600 * 1000), new Date(+new Date - 4 * 24 * 3600 * 1000)] })}
         {this.renderBtn('无限滚动优化', 'infinity scroll', { infinite: true })}
         {this.renderBtn('自定义单元格', 'cell render by youself', { renderDateFullCell: this.renderDateFullCell })}
         {this.renderBtn('onSelectAPI', 'onSelectAPI', {

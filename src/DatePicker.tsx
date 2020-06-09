@@ -20,8 +20,6 @@ export interface PropsType {
 
 export default class DatePicker extends React.PureComponent<PropsType, {}> {
   static defaultProps = {
-    minDate: new Date(1900, 0, 0, 0, 0),
-    maxDate: new Date(2100, 11, 31, 23, 59, 59),
     defaultValue: new Date(),
   } as PropsType;
 
