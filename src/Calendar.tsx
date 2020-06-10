@@ -16,6 +16,14 @@ import defaultLocale from './locale/zh_CN'
 export type ExtraData = Models.ExtraData
 export type CellData = Models.CellData
 
+// 用于保存body元素的位置信息, 处理iOS滚动穿透问题
+type BodyStyle = {
+  position: string
+  overflowY: string
+  width: string
+  height: string
+}
+
 export { PropsType }
 
 export class StateType {
@@ -35,6 +43,9 @@ export default class Calendar extends React.PureComponent<
   public static DefaultHeader = Header
 
   datePicker: any
+
+  bodyElement: HTMLBodyElement | null
+  originBodyStyle: BodyStyle
 
   static defaultProps = {
     visible: false,
@@ -80,6 +91,22 @@ export default class Calendar extends React.PureComponent<
         nextProps,
       )
     }
+    if(this.bodyElement && nextProps.visible) {
+      const { position, overflowY, height, width } = this.bodyElement.style
+      this.originBodyStyle = { position, overflowY, height, width }
+      this.bodyElement.style.position = 'fixed'
+      this.bodyElement.style.overflowY = 'hidden'
+      this.bodyElement.style.width = '100%'
+      this.bodyElement.style.height = '100%'
+    }
+  }
+
+  componentDidMount() {
+    this.bodyElement = document.getElementsByTagName('body')[0]
+  }
+
+  componentWillUnmount() {
+    this.bodyElement = null
   }
 
   selectDate = (
@@ -145,7 +172,15 @@ export default class Calendar extends React.PureComponent<
   }
 
   onClose = () => {
-    this.setState(new StateType())
+    this.setState(new StateType(), () => {
+      if(this.bodyElement) {
+        const { position, overflowY, height, width } = this.originBodyStyle
+        this.bodyElement.style.position = position
+        this.bodyElement.style.overflowY = overflowY
+        this.bodyElement.style.width = height
+        this.bodyElement.style.height = width
+      }
+    })
   };
 
   onCancel = () => {
