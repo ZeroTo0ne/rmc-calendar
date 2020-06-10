@@ -192,7 +192,9 @@ export default class Calendar extends React.PureComponent<
     const { onOk } = this.props
     const { startDate, endDate } = this.state
     if (startDate && endDate && +startDate > +endDate) {
-      return onOk && onOk(endDate, startDate)
+      onOk && onOk(endDate, startDate)
+      this.onClose()
+      return
     }
     onOk && onOk(startDate, endDate)
     this.onClose()
