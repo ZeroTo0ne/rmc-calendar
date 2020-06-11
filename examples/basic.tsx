@@ -11,6 +11,7 @@ import { RMCCalendar, ExtraData, CellData, CalendarPropsType } from '../src';
 import zhCN from '../src/locale/zh_CN';
 import enUS from '../src/locale/en_US';
 const en = location.search.indexOf('en') !== -1;
+const now = new Date();
 
 class BasicDemo extends React.Component<{}, {
   show: boolean;
@@ -61,6 +62,19 @@ class BasicDemo extends React.Component<{}, {
     </div>;
   }
 
+  
+  renderDateCellExtra = (date: Date) => {
+    if (date.getDay() === 6) return { superscrip: '班' }
+    if (date.getDay() === 1) return { info: '调休' }
+  };
+
+  disabledDate = (date: Date) => {
+    const disableStart = new Date(+now + 2 * 24 * 3600 * 1000);
+    const disableEnd = new Date(+now + 4 * 24 * 3600 * 1000);
+    if (date > disableStart && date < disableEnd) return true;
+    return false
+  }
+
   render() {
     return (
       <div style={{ marginTop: 10, marginBottom: 10, fontSize: 14 }} >
@@ -68,6 +82,9 @@ class BasicDemo extends React.Component<{}, {
         {this.renderBtn('选择日期区间', 'Select Date Range', { type: 'range' })}
         {this.renderBtn('默认选择范围', 'Selected Date Range', { type: 'range', value: [new Date(+new Date - 1 * 24 * 3600 * 1000), new Date(+new Date - 4 * 24 * 3600 * 1000)] })}
         {this.renderBtn('无限滚动优化', 'infinity scroll', { infinite: true })}
+        {this.renderBtn('月起始和周起始', 'Select Start Date', { firstDayOfMonth: 21, firstDayOfWeek: 1 })}
+        {this.renderBtn('设置不可选日期', 'Set Disabled Date', { disabledDate: this.disabledDate })}
+        {this.renderBtn('设置日期角标和底部信息', 'Set Superscrip and Info', { renderDateCellExtra: this.renderDateCellExtra })}
         {this.renderBtn('自定义单元格', 'cell render by youself', { renderDateFullCell: this.renderDateFullCell })}
         {this.renderBtn('onSelectAPI', 'onSelectAPI', {
           onSelect: (date) => {
@@ -90,7 +107,6 @@ class BasicDemo extends React.Component<{}, {
           {...this.state.config}
           visible={this.state.show}
           onCancel={() => {
-            document.getElementsByTagName('body')[0].style.overflowY = this.originbodyScrollY;
             this.setState({
               show: false,
               startTime: undefined,
