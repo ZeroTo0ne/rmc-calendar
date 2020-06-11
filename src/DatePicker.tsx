@@ -25,10 +25,17 @@ export default class DatePicker extends React.PureComponent<PropsType, {}> {
 
   state = {
     date: this.props.defaultValue,
+    scrollPanel: 'year'
   }
 
-  onDateChange = (date: Date) => {
-    this.setState({ date })
+  onScrollChange = (date: Date) => {
+    const { date: preDate }  = this.state;
+    if(!preDate) return;
+    if(date.getFullYear() !== preDate.getFullYear()) {
+      this.setState({ date, scrollPanel: 'year' })
+    } else if(date.getMonth() !== preDate.getMonth()) {
+      this.setState({ date, scrollPanel: 'month' })
+    }
   }
 
   onOk = () => {
@@ -52,14 +59,17 @@ export default class DatePicker extends React.PureComponent<PropsType, {}> {
       minDate,
       maxDate,
     } = this.props
-    const { date } = this.state
+    const { date, scrollPanel } = this.state
     const height = (clientHeight && clientHeight * 5 / 8 - 52) || Number.POSITIVE_INFINITY
 
     return (
       <div className="time-picker">
         <div className="header">
           <div className="title">{title || locale.title}</div>
-          {date ? <div className="time-show">{`${date.getFullYear()}-${date.getMonth() + 1}`}</div> : null}
+          {date ? <div className="time-show">
+            <span className={scrollPanel === 'year' ? 'time-picker-scrolling' : ''}>{date.getFullYear()}</span> -
+            <span className={scrollPanel === 'month' ? 'time-picker-scrolling' : '' }> {date.getMonth() + 1 > 9 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`}</span>
+          </div> : null}
         </div>
         <RMCDatePicker
           prefixCls={prefixCls}
@@ -73,7 +83,7 @@ export default class DatePicker extends React.PureComponent<PropsType, {}> {
           locale={locale}
           minDate={minDate}
           maxDate={maxDate}
-          onDateChange={this.onDateChange}
+          onScrollChange={this.onScrollChange}
         />
         <ConfirmPanel
           type="one"
