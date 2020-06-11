@@ -106,7 +106,14 @@ export default class Calendar extends React.PureComponent<
   }
 
   componentWillUnmount() {
-    this.bodyElement = null
+    if(this.bodyElement) {
+      const { position, overflowY, height, width } = this.originBodyStyle
+      this.bodyElement.style.position = position
+      this.bodyElement.style.overflowY = overflowY
+      this.bodyElement.style.width = height
+      this.bodyElement.style.height = width
+      this.bodyElement = null
+    }
   }
 
   selectDate = (
