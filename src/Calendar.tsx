@@ -227,12 +227,12 @@ export default class Calendar extends React.PureComponent<
   }
 
   onComeToday = () => {
-    const { locale } = this.props
+    const { locale, type } = this.props
     const today = new Date()
     this.setState({ 
       showDate: today, 
       startDate: today, 
-      endDate: today, 
+      endDate: type === 'one' ? undefined : today, 
       returnToday: true, 
       disConfirmBtn: false,
       headerTitle: formatDate(today, locale ? locale.monthTitle : 'yyyy/MM', locale)

@@ -6,7 +6,7 @@ import '../assets/index.less';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { RMCCalendar, ExtraData, CellData, CalendarPropsType } from '../src';
+import { RMCCalendar, CellData, CalendarPropsType } from '../src';
 
 import zhCN from '../src/locale/zh_CN';
 import enUS from '../src/locale/en_US';
@@ -113,11 +113,12 @@ class BasicDemo extends React.Component<{}, {
               endTime: undefined,
             });
           }}
-          onOk={(startTime: Date) => {
-            console.log('onConfirm', startTime);
+          onOk={(startTime: Date, endTime) => {
+            console.log('onConfirm', startTime, endTime);
             this.setState({
               show: false,
               startTime,
+              endTime
             });
           }}
         />
