@@ -55,7 +55,6 @@ export default class Calendar extends React.PureComponent<
     type: 'one',
     value: [],
     validRange: [new Date(1900, 0, 1, 0, 0, 0), new Date(2100, 11, 31, 23, 59, 59)],
-    defaultTimeValue: new Date(),
   } as PropsType
 
   constructor(props: PropsType) {
@@ -69,7 +68,6 @@ export default class Calendar extends React.PureComponent<
         ...this.state,
         ...this.selectDate(
           value[1],
-          true,
           { startDate: value[0], showDate: value[0], headerTitle: formatDate(value[0], locale ? locale.monthTitle : 'yyyy/MM', locale), returnToday: false },
           props,
         ),
@@ -118,7 +116,6 @@ export default class Calendar extends React.PureComponent<
 
   selectDate = (
     date: Date | undefined,
-    useDateTime = false,
     oldState: { startDate?: Date; endDate?: Date, showDate?: Date, headerTitle?: string, returnToday?: boolean } = {},
     props = this.props,
   ) => {
@@ -126,17 +123,15 @@ export default class Calendar extends React.PureComponent<
     let newState = {} as StateType
     const {
       type,
-      defaultTimeValue,
     } = props
-    const newDate = !useDateTime ? mergeDateTime(date, defaultTimeValue) : date
     const { startDate, endDate } = oldState
 
     switch (type) {
       case 'one':
         newState = {
           ...newState,
-          startDate: newDate,
-          showDate: newDate,
+          startDate: date,
+          showDate: date,
           disConfirmBtn: false,
         }
         break
@@ -145,19 +140,16 @@ export default class Calendar extends React.PureComponent<
         if (!startDate || endDate) {
           newState = {
             ...newState,
-            startDate: newDate,
+            startDate: date,
             endDate: undefined,
-            showDate: newDate,
+            showDate: date,
             disConfirmBtn: true,
           }
         } else {
           newState = {
             ...newState,
             disConfirmBtn: false,
-            endDate:
-              !useDateTime && +newDate >= +startDate
-                ? new Date(+mergeDateTime(newDate, startDate) + 3600000)
-                : newDate,
+            endDate: date,
           }
         }
         break
@@ -169,7 +161,7 @@ export default class Calendar extends React.PureComponent<
     const { startDate, endDate } = this.state
     const { onSelect } = this.props
     onSelect && onSelect(date, [startDate, endDate])
-    this.setState(this.selectDate(date, false, { startDate, endDate }))
+    this.setState(this.selectDate(date, { startDate, endDate }))
   }
 
   onSelectMonth = () => {
@@ -256,7 +248,7 @@ export default class Calendar extends React.PureComponent<
     this.setState({
       startDate,
       headerTitle: formatDate(startDate, props.locale ? props.locale.monthTitle : 'yyyy/MM', props.locale),
-      ...this.selectDate(endDate, true, { startDate }, props),
+      ...this.selectDate(endDate, { startDate }, props),
       showDatePicker: false,
     })
   };
