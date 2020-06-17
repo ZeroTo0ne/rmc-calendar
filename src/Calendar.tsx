@@ -9,7 +9,7 @@ import Header from './panel/Header'
 import { Models } from './panel/DataTypes'
 import PropsType from './CalendarProps'
 
-import { mergeDateTime, formatDate } from './util'
+import { formatDate } from './util'
 
 import defaultLocale from './locale/zh_CN'
 
@@ -145,9 +145,7 @@ export default class Calendar extends React.PureComponent<
   ) => {
     if (!date) return {} as StateType
     let newState = {} as StateType
-    const {
-      type,
-    } = props
+    const { type } = props
     const { startDate, endDate } = oldState
 
     switch (type) {
