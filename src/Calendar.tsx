@@ -55,40 +55,64 @@ export default class Calendar extends React.PureComponent<
     type: 'one',
     value: [],
     validRange: [new Date(1900, 0, 1, 0, 0, 0), new Date(2100, 11, 31, 23, 59, 59)],
+    firstDayOfMonth: 1,
   } as PropsType
 
   constructor(props: PropsType) {
     super(props)
 
     this.state = new StateType()
-    const { locale } = props
+    const { locale, firstDayOfMonth = 1 } = props
     const value = props.value || props.defaultValue
+    let showDate: Date
     if (value && value.length > 0) {
+      showDate = this.getShowDate(value[0], firstDayOfMonth)
       this.state = {
         ...this.state,
+        showDate,
         ...this.selectDate(
           value[1],
-          { startDate: value[0], showDate: value[0], headerTitle: formatDate(value[0], locale ? locale.monthTitle : 'yyyy/MM', locale), returnToday: false },
+          { startDate: value[0], headerTitle: formatDate(showDate, locale ? locale.monthTitle : 'yyyy/MM', locale), returnToday: false },
           props,
         ),
       }
     } else {
+      showDate = this.getShowDate(new Date(), firstDayOfMonth)
       this.state = {
         ...this.state,
-        headerTitle: formatDate(new Date(), locale ? locale.monthTitle : 'yyyy/MM', locale)
+        headerTitle: formatDate(showDate, locale ? locale.monthTitle : 'yyyy/MM', locale),
+        showDate
       }
     }
   }
 
   componentWillReceiveProps(nextProps: PropsType) {
+    const { locale, firstDayOfMonth = 1 } = nextProps
     const value = nextProps.value || nextProps.defaultValue
-    if (!this.props.visible && nextProps.visible && value && value.length > 0) {
-      this.shortcutSelect(
-        value[0],
-        value[1],
-        nextProps,
-      )
+    if(!value) return
+    let showDate: Date
+    if (value.length > 0) {
+      showDate = this.getShowDate(value[0], firstDayOfMonth)
+      this.setState({
+        startDate: value[0],
+        showDate,
+        headerTitle: formatDate(showDate, locale ? locale.monthTitle : 'yyyy/MM', locale),
+        ...this.selectDate(
+          value[1],
+          { startDate: value[0], returnToday: false },
+          nextProps,
+        )
+      })
+    } else if(value.length === 0) {
+      showDate = this.getShowDate(new Date(), firstDayOfMonth)
+      this.setState({
+        showDate,
+        startDate: undefined,
+        endDate: undefined,
+        headerTitle: formatDate(showDate, locale ? locale.monthTitle : 'yyyy/MM', locale)
+      })
     }
+
     if(this.bodyElement && nextProps.visible) {
       const { position, overflowY, height, width } = this.bodyElement.style
       this.originBodyStyle = { position, overflowY, height, width }
@@ -131,7 +155,6 @@ export default class Calendar extends React.PureComponent<
         newState = {
           ...newState,
           startDate: date,
-          showDate: date,
           disConfirmBtn: false,
         }
         break
@@ -142,7 +165,6 @@ export default class Calendar extends React.PureComponent<
             ...newState,
             startDate: date,
             endDate: undefined,
-            showDate: date,
             disConfirmBtn: true,
           }
         } else {
@@ -219,15 +241,16 @@ export default class Calendar extends React.PureComponent<
   }
 
   onComeToday = () => {
-    const { locale, type } = this.props
+    const { locale, type, firstDayOfMonth = 1 } = this.props
     const today = new Date()
+    const showDate = this.getShowDate(today, firstDayOfMonth)
     this.setState({ 
-      showDate: today, 
+      showDate,
       startDate: today, 
       endDate: type === 'one' ? undefined : today, 
       returnToday: true, 
       disConfirmBtn: false,
-      headerTitle: formatDate(today, locale ? locale.monthTitle : 'yyyy/MM', locale)
+      headerTitle: formatDate(showDate, locale ? locale.monthTitle : 'yyyy/MM', locale)
     }, () => {
       this.setState({ returnToday: false })
     })
@@ -244,20 +267,17 @@ export default class Calendar extends React.PureComponent<
     this.props.onClear && this.props.onClear()
   };
 
-  shortcutSelect = (startDate: Date, endDate: Date | undefined, props = this.props) => {
-    this.setState({
-      startDate,
-      headerTitle: formatDate(startDate, props.locale ? props.locale.monthTitle : 'yyyy/MM', props.locale),
-      ...this.selectDate(endDate, { startDate }, props),
-      showDatePicker: false,
-    })
-  };
-
   setClientHeight = (height: number) => {
     this.setState({
       clientHight: height,
     })
   };
+
+  getShowDate = (defaultDate: Date, firstDayOfMonth: number) => {
+    const startMonthNum = defaultDate.getMonth()
+    const startDateNum = defaultDate.getDate()
+    return startDateNum >= firstDayOfMonth ? defaultDate : new Date(defaultDate.getFullYear(), startMonthNum - 1, firstDayOfMonth)
+  }
 
   render() {
     const {
