@@ -33,7 +33,7 @@
             "jsx-double"
         ],
         "semicolon": [
-            true,
+            false,
             "always"
         ],
         "typedef-whitespace": [

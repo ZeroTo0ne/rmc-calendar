@@ -30,10 +30,10 @@ export default class DatePicker extends React.PureComponent<PropsType, {}> {
 
   onScrollChange = (date: Date) => {
     const { date: preDate }  = this.state;
-    if(!preDate) return;
-    if(date.getFullYear() !== preDate.getFullYear()) {
+    if (!preDate) return;
+    if (date.getFullYear() !== preDate.getFullYear()) {
       this.setState({ date, scrollPanel: 'year' })
-    } else if(date.getMonth() !== preDate.getMonth()) {
+    } else if (date.getMonth() !== preDate.getMonth()) {
       this.setState({ date, scrollPanel: 'month' })
     }
   }

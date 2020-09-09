@@ -47,7 +47,7 @@ export default class Calendar extends React.PureComponent<
   bodyElement: HTMLBodyElement | null
   originBodyStyle: BodyStyle
 
-  static defaultProps = {
+  defaultProps = {
     visible: false,
     showHeader: true,
     locale: defaultLocale,
@@ -89,7 +89,7 @@ export default class Calendar extends React.PureComponent<
   componentWillReceiveProps(nextProps: PropsType) {
     const { locale, firstDayOfMonth = 1 } = nextProps
     const value = nextProps.value || nextProps.defaultValue
-    if(!value) return
+    if (!value) return
     let showDate: Date
     if (value.length > 0) {
       showDate = this.getShowDate(value[0], firstDayOfMonth)
@@ -103,7 +103,7 @@ export default class Calendar extends React.PureComponent<
           nextProps,
         )
       })
-    } else if(value.length === 0) {
+    } else if (value.length === 0) {
       showDate = this.getShowDate(new Date(), firstDayOfMonth)
       this.setState({
         showDate,
@@ -113,7 +113,7 @@ export default class Calendar extends React.PureComponent<
       })
     }
 
-    if(this.bodyElement && nextProps.visible) {
+    if (this.bodyElement && nextProps.visible) {
       const { position, overflowY, height, width } = this.bodyElement.style
       this.originBodyStyle = { position, overflowY, height, width }
       this.bodyElement.style.position = 'fixed'
@@ -128,7 +128,7 @@ export default class Calendar extends React.PureComponent<
   }
 
   componentWillUnmount() {
-    if(this.bodyElement) {
+    if (this.bodyElement) {
       const { position, overflowY, height, width } = this.originBodyStyle
       this.bodyElement.style.position = position
       this.bodyElement.style.overflowY = overflowY
@@ -192,7 +192,7 @@ export default class Calendar extends React.PureComponent<
 
   onClose = () => {
     this.setState(new StateType(), () => {
-      if(this.bodyElement) {
+      if (this.bodyElement) {
         const { position, overflowY, height, width } = this.originBodyStyle
         this.bodyElement.style.position = position
         this.bodyElement.style.overflowY = overflowY
@@ -242,11 +242,11 @@ export default class Calendar extends React.PureComponent<
     const { locale, type, firstDayOfMonth = 1 } = this.props
     const today = new Date()
     const showDate = this.getShowDate(today, firstDayOfMonth)
-    this.setState({ 
+    this.setState({
       showDate,
-      startDate: today, 
-      endDate: type === 'one' ? undefined : today, 
-      returnToday: true, 
+      startDate: today,
+      endDate: type === 'one' ? undefined : today,
+      returnToday: true,
       disConfirmBtn: false,
       headerTitle: formatDate(showDate, locale ? locale.monthTitle : 'yyyy/MM', locale)
     }, () => {

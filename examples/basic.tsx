@@ -62,7 +62,6 @@ class BasicDemo extends React.Component<{}, {
     </div>;
   }
 
-  
   renderDateCellExtra = (date: Date) => {
     if (date.getDay() === 6) return { superscrip: '班' }
     if (date.getDay() === 1) return { info: '调休' }
