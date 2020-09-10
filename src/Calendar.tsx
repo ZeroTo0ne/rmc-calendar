@@ -65,7 +65,7 @@ export default class Calendar extends React.PureComponent<
     const { locale, firstDayOfMonth = 1 } = props
     const value = props.value || props.defaultValue
     let showDate: Date
-    if (value && value.length > 0) {
+    if (value && value.length > 0 && value[0]) {
       showDate = this.getShowDate(value[0], firstDayOfMonth)
       this.state = {
         ...this.state,
@@ -91,7 +91,7 @@ export default class Calendar extends React.PureComponent<
     const value = nextProps.value || nextProps.defaultValue
     if (!value) return
     let showDate: Date
-    if (value.length > 0) {
+    if (value.length > 0 && value[0]) {
       showDate = this.getShowDate(value[0], firstDayOfMonth)
       this.setState({
         startDate: value[0],
