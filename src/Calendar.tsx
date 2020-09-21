@@ -42,12 +42,7 @@ export default class Calendar extends React.PureComponent<
 > {
   public static DefaultHeader = Header
 
-  datePicker: any
-
-  bodyElement: HTMLBodyElement | null
-  originBodyStyle: BodyStyle
-
-  defaultProps = {
+  static defaultProps = {
     visible: false,
     showHeader: true,
     locale: defaultLocale,
@@ -58,10 +53,14 @@ export default class Calendar extends React.PureComponent<
     firstDayOfMonth: 1,
   } as PropsType
 
+  state = new StateType()
+  datePicker: any
+  bodyElement: HTMLBodyElement | null
+  originBodyStyle: BodyStyle | null
+
   constructor(props: PropsType) {
     super(props)
 
-    this.state = new StateType()
     const { locale, firstDayOfMonth = 1 } = props
     const value = props.value || props.defaultValue
     let showDate: Date
@@ -128,7 +127,7 @@ export default class Calendar extends React.PureComponent<
   }
 
   componentWillUnmount() {
-    if (this.bodyElement) {
+    if (this.bodyElement && this.originBodyStyle) {
       const { position, overflowY, height, width } = this.originBodyStyle
       this.bodyElement.style.position = position
       this.bodyElement.style.overflowY = overflowY
@@ -192,7 +191,7 @@ export default class Calendar extends React.PureComponent<
 
   onClose = () => {
     this.setState(new StateType(), () => {
-      if (this.bodyElement) {
+      if (this.bodyElement && this.originBodyStyle) {
         const { position, overflowY, height, width } = this.originBodyStyle
         this.bodyElement.style.position = position
         this.bodyElement.style.overflowY = overflowY
